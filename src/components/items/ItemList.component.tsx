@@ -1,21 +1,27 @@
 import * as React from 'react';
 import { Item } from '../../models/items/Item.interface';
 
-interface IItemsListProps {
-    items: Item[]
+interface ItemListProps {
+    items: Item[],
+    onItemSelect: (item: Item) => void
 }
 
-const ItemList: React.FunctionComponent<IItemsListProps> = (props) => {
+const ItemList: React.FunctionComponent<ItemListProps> = (props) => {
+  const handleItemClick = (item: Item) => {
+    props.onItemSelect(item);
+  }
+
   return (
     <div>
         <h3>Items:</h3>
-        <ul>
           {props.items.map((item, index) => {
             return (
-              <li key={index}>{item.name}</li>
-            )
+              <button 
+                key={index} 
+                onClick={() => handleItemClick(item)}
+              >{item.name} - {item.selected.toString()}</button>
+            );
           })}
-        </ul>
     </div>
   )
 };
