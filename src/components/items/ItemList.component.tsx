@@ -1,29 +1,31 @@
 import * as React from 'react';
-import { Item } from '../../models/items/Item.interface';
+import { IItem } from '../../models/items/Item.interface';
+import Item from './children/Item.component';
 
 interface ItemListProps {
-    items: Item[],
-    onItemSelect: (item: Item) => void
+  items: IItem[];
+  onItemSelect: (item: IItem) => void;
 }
 
 const ItemList: React.FunctionComponent<ItemListProps> = (props) => {
-  const handleItemClick = (item: Item) => {
+  const handleItemClick = (item: IItem) => {
     props.onItemSelect(item);
-  }
+  };
 
   return (
     <div>
-        <h3>Items:</h3>
-          {props.items.map((item, index) => {
-            return (
-              <button 
-                key={index} 
-                onClick={() => handleItemClick(item)}
-              >{item.name} - {item.selected.toString()}</button>
-            );
-          })}
+      <h3>Items:</h3>
+      {props.items.map((item, index) => {
+        return (
+          <Item
+            key={index}
+            testid={`item-${item.id}`}
+            model={item}
+            onItemSelect={() => handleItemClick(item)}></Item>
+        );
+      })}
     </div>
-  )
+  );
 };
 
 export default ItemList;
