@@ -1,5 +1,5 @@
-export interface Item {
-    id: number;
-    name: string;
-    selected: boolean;
+export interface IItem {
+  id: number;
+  name: string;
+  selected: boolean;
 }
