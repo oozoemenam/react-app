@@ -1,5 +1,6 @@
 import { Dispatch } from 'react';
 import { useSelector } from 'react-redux';
+import { apiClient } from '../../api-client';
 import { IItem } from '../../models/items/Item.interface';
 import { IRootStore } from '../root/Root.store';
 import { itemsStoreSlice } from './Items.slice';
@@ -10,26 +11,8 @@ export function useItemsActions(commit: Dispatch<any>) {
   const actions = {
     loadItems: async () => {
       commit(mutations.setLoading(true));
-      const mockItems: IItem[] = [
-        {
-          id: 1,
-          name: 'Item 1',
-          selected: false
-        },
-        {
-          id: 2,
-          name: 'Item 2',
-          selected: false
-        },
-        {
-          id: 3,
-          name: 'Item 3',
-          selected: false
-        }
-      ];
-      setTimeout(() => {
-        commit(mutations.setItems(mockItems));
-      }, 1000);
+      const data = await apiClient.items.fetchItems();
+      commit(mutations.setItems(data));
     },
     toggleItemSelected: async (item: IItem) => {
       commit(mutations.setItemSelected(item));
