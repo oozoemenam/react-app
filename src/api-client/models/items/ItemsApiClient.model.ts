@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { HttpRequestParams, HttpRequestType, useHttpClient } from '../../../http-client';
+// import { HttpRequestParams, HttpRequestType, useHttpClient } from '@/http-client';
 import { IItem } from '../../../models/items/Item.interface';
 import { ItemsApiClient } from './ItemsApiClient.interface';
 import { ItemsApiClientEndpoints, ItemsApiClientOptions } from './ItemsApiClientOptions.interface';
@@ -15,26 +16,12 @@ export class ItemsApiClientModel implements ItemsApiClient {
   }
 
   fetchItems(): Promise<IItem[]> {
-    return new Promise<IItem[]>((resolve) => {
-      const endpoint = this.endpoints.fetchItems;
-      const options: AxiosRequestConfig = {
-        headers: {}
-      };
-
-      axios
-        .get(endpoint, options)
-        .then((response: AxiosResponse) => {
-          if (!this.mockDelay) {
-            resolve(response.data as IItem[]);
-          } else {
-            setTimeout(() => {
-              resolve(response.data as IItem[]);
-            }, this.mockDelay);
-          }
-        })
-        .catch((error: any) => {
-          console.error('ItemsApliClient: HttpClient GET error', error);
-        });
-    });
+    const requestParameters: HttpRequestParams = {
+      requestType: HttpRequestType.get,
+      endpoint: this.endpoints.fetchItems,
+      requiresToken: false,
+      mockDelay: this.mockDelay
+    };
+    return useHttpClient().request<IItem[]>(requestParameters);
   }
 }
