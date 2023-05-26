@@ -5,14 +5,15 @@
   "type": "module",
   "scripts": {
     "start": "npm run dev",
-    "dev": "vite --port 3000 --mode mock",
-    "build": "tsc && vite build --mode production",
-    "build-mock": "tsc && vite build --mode mock",
+    "dev": "vite --port 3000 --config vite.config.mock.ts --mode mock",
+    "build": "tsc && vite  --config vite.config.prod.ts --mode prod",
+    "build-mock": "tsc && vite build --config vite.config.mock.ts --mode mock",
+    "build-beta": "tsc && vite build --config vite.config.prod.ts --mode beta",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "preview": "vite preview",
-    "test": "vitest run",
+    "test": "vitest run --config vite.config.mock.ts --mode mock",
     "test-watch": "npm run test --watch"
   },
   "dependencies": {
