@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "npm run dev",
-    "dev": "vite --port 3000 --config vite.config.mock.ts --mode mock",
+    "dev": "vite --config vite.config.mock.ts --mode mock",
     "build": "tsc && vite  --config vite.config.prod.ts --mode prod",
     "build-mock": "tsc && vite build --config vite.config.mock.ts --mode mock",
     "build-beta": "tsc && vite build --config vite.config.prod.ts --mode beta",
