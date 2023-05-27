@@ -3,14 +3,10 @@ import './App.css';
 import { useLocalization } from './localization';
 import { rootStore } from './store';
 import ItemsView from './views/Items.view';
+import PrimitivesView from './views/Primitives.view';
 
 function App() {
   const { t, locales, currentLocale, getUserPreferredLocale, changeLocale } = useLocalization();
-
-  // $: if (!$isLocaleLoaded) {
-  //   changeLocale(getUserPreferredLocale())
-
-  // }
 
   const handleLocaleClick = (localId: string) => {
     changeLocale(localId);
@@ -44,6 +40,7 @@ function App() {
         </div>
         <h1>{t('home.welcome')}</h1>
         <ItemsView />
+        <PrimitivesView />
       </div>
     </Provider>
   );
