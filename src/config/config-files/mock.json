@@ -1,6 +1,6 @@
 {
   "global": {
-    "version": 0.103
+    "version": 0.2
   },
   "httpClient": {
     "tokenKey": "myapp-token",
@@ -15,6 +15,25 @@
         "fetchItems": "/static/mock-data/items/items.json"
       },
       "mockDelay": 250
+    }
+  },
+  "localization": {
+    "apiClientOptions": {
+      "endpoints": {
+        "fetchTranslation": "/static/mock-data/localization/[namespace]/[key].json"
+      },
+      "mockDelay": 250
+    },
+    "locales": [
+      { "key": "en-US", "isDefault": true },
+      { "key": "it-IT", "isDefault": false },
+      { "key": "de-DE", "isDefault": false },
+      { "key": "fr-FR", "isDefault": false },
+      { "key": "es-ES", "isDefault": true }
+    ],
+    "localStorageCache": {
+      "enabled": true,
+      "expirationInMinutes": 60
     }
   }
 }

@@ -1,0 +1,14 @@
+{
+  "locale.selector.en-US": "Inglese",
+  "locale.selector.it-IT": "Italiano",
+  "locale.selector.de-DE": "Tedesco",
+  "locale.selector.fr-FR": "Francese",
+  "locale.selector.es-ES": "Spagnolo",
+
+  "home.welcome": "Benvenuto: this message is localized in English",
+
+  "navigation.home": "Home",
+  "navigation.about": "Chi Siamo",
+
+  "items.list.header": "I miei articoli"
+}
