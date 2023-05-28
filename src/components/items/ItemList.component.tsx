@@ -26,6 +26,7 @@ const ItemList: React.FunctionComponent<ItemListProps> = ({ loading, items, onIt
               key={index}
               testid={`item-${item.id}`}
               model={item}
+              isLast={index === items.length - 1}
               onItemSelect={() => handleItemClick(item)}></Item>
           );
         })}

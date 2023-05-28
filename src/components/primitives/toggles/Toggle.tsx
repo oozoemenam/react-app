@@ -1,10 +1,10 @@
 type Props = {
   testid?: string;
-  id: string;
+  id?: string;
   checked?: boolean;
   disabled?: boolean;
   addCss?: string;
-  onClick: Function;
+  onClick?: Function;
 };
 
 const Toggle = (props: Props) => {
@@ -45,7 +45,7 @@ const Toggle = (props: Props) => {
   };
 
   const handleClick = () => {
-    if (!disabled) {
+    if (!disabled && onClick) {
       onClick(id);
     }
   };
