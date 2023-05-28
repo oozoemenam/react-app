@@ -5,7 +5,7 @@ import ItemsView from './views/Items.view';
 import PrimitivesView from './views/Primitives.view';
 
 function App() {
-  const { t, locales, currentLocale, getUserPreferredLocale, changeLocale } = useLocalization();
+  const { t, locales, currentLocale, changeLocale } = useLocalization();
 
   const handleLocaleClick = (localId: string) => {
     changeLocale(localId);
